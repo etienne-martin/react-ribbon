@@ -1,0 +1,27 @@
+.container {
+  position: relative;
+
+  .carousel {
+    --offset: 70px;
+    --slide-gap: 20px;
+    --slides-per-page: 3;
+    --slides-to-scroll: 1;
+
+    @media only screen and (max-width: 1920px) {
+      --slides-per-page: 2.25;
+    }
+
+    @media only screen and (max-width: 1439px) {
+      --slides-per-page: 2;
+    }
+
+    @media only screen and (max-width: 1079px) {
+      --slides-per-page: 1.25;
+    }
+
+    @media only screen and (max-width: 640px) {
+      --offset: 40px;
+      --slides-per-page: 1;
+    }
+  }
+}

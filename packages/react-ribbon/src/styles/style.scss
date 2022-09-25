@@ -1,0 +1,79 @@
+.container {
+  --current-page: 0;
+  --offset: 0px;
+  --slide-gap: 0px;
+  --slides-per-page: 1;
+  --slides-to-scroll: var(--slides-per-page);
+  --scroll-duration: 0.5s;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* Offset
+   * Prevent people from changing horizontal padding as it would conflict with the offset
+   */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  /* Slides per page */
+  --total-offset: calc(var(--offset) * 2);
+  --slide-space-count: calc(var(--slides-per-page) - 1);
+
+  --total-slide-spacing-width: calc(
+    var(--slide-space-count) * var(--slide-gap)
+  );
+
+  --slide-width: calc(
+    (100% - var(--total-offset) - var(--total-slide-spacing-width)) /
+      var(--slides-per-page)
+  );
+
+  & > .track {
+    backface-visibility: hidden;
+
+    &.animate {
+      transition: transform var(--scroll-duration);
+    }
+
+    --translate-x: (
+      var(--current-page) *
+        calc(
+          calc(var(--slide-width) + var(--slide-gap)) *
+            var(--slides-to-scroll)
+        )
+    );
+
+    transform: translateX(calc(var(--translate-x) * -1));
+
+    /* Offset
+    * use pseudo-elements instead of padding because of a bug in firefox
+    * https://bugzilla.mozilla.org/show_bug.cgi?id=748518
+    */
+    &:before,
+    &:after {
+      content: "";
+      display: inline-block;
+      height: 0;
+      width: var(--offset);
+    }
+
+    & .slide {
+      display: inline-block;
+      vertical-align: top;
+      width: var(--slide-width);
+
+      /**
+       * Because of a bug in Safari 14, we cannot reset the white-space on the slide element itself
+       * so we need to reset it on the slide's first child.
+       */
+      & > * {
+        white-space: normal;
+      }
+
+      /* Slide spacing */
+      &:not(:last-child) {
+        margin-right: var(--slide-gap);
+      }
+    }
+  }
+}
