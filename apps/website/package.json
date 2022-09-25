@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4444",
-    "build": "next build",
-    "start": "next start -p 4444",
+    "build": "next build && next export -o ./dist/out",
+    "start": "serve -p 4444 ./dist/out",
     "type-check": "tsc --noEmit --pretty"
   },
   "dependencies": {
     "next": "^12.3.1",
     "react-ribbon": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "serve": "^14.0.1"
+  }
 }
