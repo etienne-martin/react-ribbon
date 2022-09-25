@@ -14,8 +14,7 @@
     "type-check": "turbo run type-check --color",
     "lint": "eslint ./ --ext js,jsx,ts,tsx,json --max-warnings=0",
     "lint:fix": "yarn lint --fix",
-    "deploy": "turbo run deploy --color",
-    "audit-packages": "./scripts/audit.sh"
+    "deploy": "turbo run deploy --color"
   },
   "dependencies": {
     "react": "^17.0.2",
