@@ -38,6 +38,8 @@ jobs:
 
       - name: Turbo
         run: yarn turbo run build type-check
+        env:
+          WEBSITE_BASE_PATH: "/react-ribbon"
 
       - name: Lint
         run: yarn lint
@@ -49,4 +51,3 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: website
           publish_dir: ./apps/website/dist/out
-          # cname: etiennemartin.ca
