@@ -28,5 +28,5 @@ if npm show "$PACKAGE_NAME" version | grep -w "$PACKAGE_VERSION" > /dev/null; th
   npm version "$PACKAGE_VERSION-next-$TIMESTAMP"
   npm publish --tag next
 else
-  npm publish
+  npm publish --access public
 fi
