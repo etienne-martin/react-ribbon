@@ -1,6 +1,6 @@
 # react-ribbon
 
-A fully responsive carousel with built-in SSR support.
+A fully responsive React carousel with first-class SSR support.
 
 ## Installation
 
