@@ -7,13 +7,14 @@ import styles from "../styles/style.scss";
 export interface SlideProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement;
   isVisible: boolean;
+  lazy: boolean;
 }
 
 const cx = classNames.bind(styles);
 
-export const Slide: FC<SlideProps> = ({ children, isVisible }) => {
+export const Slide: FC<SlideProps> = ({ children, isVisible, lazy }) => {
   const { ref, inView } = useInView();
-  const shouldRender = inView || isVisible;
+  const shouldRender = lazy ? inView || isVisible : true;
 
   return (
     <div className={cx("slide")} ref={ref}>

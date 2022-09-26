@@ -1,12 +1,15 @@
 {
   "name": "react-ribbon",
   "version": "0.0.1",
-  "description": "Yet another carousel library",
+  "description": "A fully responsive React carousel with first-class SSR support",
   "license": "MIT",
   "keywords": [
     "react",
     "carousel",
     "slider",
+    "responsive",
+    "ssr",
+    "server-side-rendering",
     "typescript"
   ],
   "author": {

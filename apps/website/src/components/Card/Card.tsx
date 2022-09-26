@@ -13,13 +13,7 @@ export const Card: FC<CardProps> = ({ index }) => {
   return (
     <div className={styles.card} tabIndex={1}>
       <RatioBox>
-        <img
-          className={styles.image}
-          tabIndex={0}
-          alt=""
-          src={src}
-          loading="lazy"
-        />
+        <img className={styles.image} tabIndex={0} alt="" src={src} />
       </RatioBox>
     </div>
   );

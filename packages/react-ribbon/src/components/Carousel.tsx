@@ -29,6 +29,7 @@ export type CarouselRef = {
 export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[];
   initialSlideCount: number;
+  lazy?: boolean;
   onPageChange?: (onPageChangeParams: OnPageChangeParams) => void;
 }
 
@@ -40,7 +41,14 @@ const getCssVariable = (elem: HTMLDivElement, variable: string) => {
 
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(
   (
-    { children, initialSlideCount, onPageChange, className, ...otherProps },
+    {
+      children,
+      initialSlideCount,
+      lazy = true,
+      onPageChange,
+      className,
+      ...otherProps
+    },
     ref
   ) => {
     const widthRef = useRef(0);
@@ -175,7 +183,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
               index >= firstVisibleSlide && index <= lastVisibleSlide;
 
             return (
-              <Slide isVisible={isVisible} key={index}>
+              <Slide isVisible={isVisible} lazy={lazy} key={index}>
                 {element}
               </Slide>
             );
