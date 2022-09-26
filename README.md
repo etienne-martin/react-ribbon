@@ -1,6 +1,6 @@
 # react-ribbon
 
-A fully responsive React carousel with first-class SSR support.
+A performant and fully responsive React carousel with first-class SSR support.
 
 [![Build status](https://github.com/etienne-martin/react-ribbon/workflows/Pipeline/badge.svg)](https://github.com/etienne-martin/react-ribbon/actions)
 [![npm monthly downloads](https://img.shields.io/npm/dm/react-ribbon.svg)](https://www.npmjs.com/package/react-ribbon)
@@ -21,13 +21,13 @@ The appearance and behavior of carousels are controlled via [CSS variables](http
 
 Pages are used to determine how many slides will be visible at a given time. A page can hold many slides. While slides are actual elements in the DOM tree, pages are purely conceptual.
 
-Can be an integer a floating number. Defaults to `1`.
+Can be an integer or a floating number. Defaults to `1`.
 
 ---                     
 
 **`--slides-to-scroll`**
 
-Controls how many slides should be scrolled when navigating the carousel. Defaults to `--slides-per-page`.
+Controls the number of slides to scroll through when navigating the carousel. Defaults to `--slides-per-page`.
 
 ---
 
@@ -45,7 +45,7 @@ The amount of space between each slide. Can be in percentage or pixels. Defaults
 
 **`--offset`**      
 
-The horizontal offset applied to the carousel Can be in percentage or pixels. Defaults to `0px`.
+The horizontal offset applied to the carousel. Can be in percentage or pixels. Defaults to `0px`.
 
 
 ## Props
@@ -62,7 +62,7 @@ An array of React elements to be rendered as slides inside the carousel.
 
 `({ currentPage, lastPage }: OnPageChangeParams) => void`
 
-Triggered whenever a navigation occurs and after mounting the carousel.
+Triggered on mount and whenever navigation occurs.
 
 ---
 
@@ -70,7 +70,7 @@ Triggered whenever a navigation occurs and after mounting the carousel.
 
 `number`
 
-The number of slides to include in the initial server-side render. This help to reduce the size of the HTML payload and speed up hydration by partially rendering only a fixed number of slides on the server.
+The number of slides to include in the initial server-side rendering. This helps reduce the size of the HTML payload and speeds up hydration by rendering a fixed number of slides on the server.
 
 ---
 
@@ -86,4 +86,4 @@ On-demand rendering of slides as they move into view. Enabled by default.
 
 `CarouselRef`
 
-A ref which gives access to the `prevPage` and `nextPage` functions used for navigation.
+A React ref which gives access to the `prevPage` and `nextPage` functions used for navigation.
