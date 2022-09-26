@@ -1,4 +1,5 @@
 import React, {
+  FocusEvent,
   HTMLAttributes,
   ReactElement,
   useRef,
@@ -35,6 +36,8 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
 
 const cx = classNames.bind(styles);
 
+const SLIDE_CLASSNAME = cx("slide");
+
 const getCssVariable = (elem: HTMLDivElement, variable: string) => {
   return parseFloat(getComputedStyle(elem).getPropertyValue(variable));
 };
@@ -53,6 +56,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
   ) => {
     const widthRef = useRef(0);
     const containerRef = useRef<HTMLDivElement>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
 
     const [state, setState] = useState({
       currentPage: 0,
@@ -124,6 +128,27 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
     const prevPage = () => changePage(Math.max(0, currentPage - 1));
     const nextPage = () => changePage(Math.min(getLastPage(), currentPage + 1));
 
+    const handleFocus = (event: FocusEvent) => {
+      if (!trackRef.current) return;
+
+      const focusedSlide = event.target.closest(
+        `.${CSS.escape(SLIDE_CLASSNAME)}`
+      );
+
+      if (!focusedSlide) return;
+
+      const focusedSlideIndex = [...trackRef.current.children].indexOf(
+        focusedSlide
+      );
+
+      // TODO: this should be more granular, we should scroll the track just enough to reveal the element that gained focus
+      if (focusedSlideIndex > pageEnd) {
+        nextPage();
+      } else if (focusedSlideIndex < pageStart) {
+        prevPage();
+      }
+    };
+
     useResizeObserver(containerRef, ([entry]) => {
       if (!entry) return;
       if (widthRef.current === entry.contentRect.width) return;
@@ -172,11 +197,13 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
             "--current-page": getCurrentPageWithOffset(),
           } as CSSProperties
         }
+        onFocus={handleFocus}
       >
         <div
           className={cx("track", {
             animate: shouldAnimate,
           })}
+          ref={trackRef}
         >
           {children.map((element, index) => {
             const isVisible =

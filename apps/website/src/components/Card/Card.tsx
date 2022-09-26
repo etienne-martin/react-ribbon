@@ -11,9 +11,9 @@ export const Card: FC<CardProps> = ({ index }) => {
   const src = `https://via.placeholder.com/800/EEE/CCC/?text=${index}`;
 
   return (
-    <div className={styles.card} tabIndex={1}>
+    <div className={styles.card} tabIndex={0}>
       <RatioBox>
-        <img className={styles.image} tabIndex={0} alt="" src={src} />
+        <img className={styles.image} alt="" src={src} />
       </RatioBox>
     </div>
   );
