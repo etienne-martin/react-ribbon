@@ -74,6 +74,14 @@ The number of slides to include in the initial server-side render. This help to 
 
 ---
 
+### lazy
+
+`boolean`
+
+On-demand rendering of slides as they move into view. Enabled by default.
+
+---
+
 ### ref
 
 `CarouselRef`
