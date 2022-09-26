@@ -1,7 +1,9 @@
-#!/bin/bash -x
+#!/bin/bash
 
 # Exit when any command fail
 set -eo pipefail
+
+TIMESTAMP=$(date +%s)
 
 # Get package name from package.json
 PACKAGE_NAME=$(cat package.json \
@@ -20,7 +22,9 @@ PACKAGE_VERSION=$(cat package.json \
   | tr -d '[[:space:]]')
 
 if npm show "$PACKAGE_NAME" version | grep -w "$PACKAGE_VERSION" > /dev/null; then
-  echo "Already published!";
+  echo "Package $PACKAGE_NAME@$PACKAGE_VERSION already exists, publishing to @next"
+  npm version "$PACKAGE_VERSION-next-$TIMESTAMP"
+  npm publish --tag next
 else
-  npm publish;
+  npm publish
 fi

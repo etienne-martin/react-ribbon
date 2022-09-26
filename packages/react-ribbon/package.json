@@ -15,7 +15,8 @@
     "types": "tsc --declaration --emitDeclarationOnly --declarationDir dist",
     "type-check": "tsc --noEmit --pretty",
     "prebuild": "yarn cleanup",
-    "cleanup": "rm -rf ./dist"
+    "cleanup": "rm -rf ./dist",
+    "deploy": "../../scripts/deploy.sh"
   },
   "peerDependencies": {
     "react": ">=16.9.0"
