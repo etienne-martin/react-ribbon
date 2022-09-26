@@ -2,6 +2,28 @@
   "name": "react-ribbon",
   "version": "0.0.1",
   "description": "Yet another carousel library",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "carousel",
+    "slider",
+    "typescript"
+  ],
+  "author": {
+    "name": "Etienne Martin",
+    "url": "https://etiennemartin.ca/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etienne-martin/react-ribbon"
+  },
+  "bugs": {
+    "url": "https://github.com/etienne-martin/react-ribbon/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -16,7 +38,8 @@
     "type-check": "tsc --noEmit --pretty",
     "prebuild": "yarn cleanup",
     "cleanup": "rm -rf ./dist",
-    "deploy": "../../scripts/deploy.sh"
+    "deploy": "../../scripts/deploy.sh",
+    "prepublishOnly": "cp ../../README.md ./README.md"
   },
   "peerDependencies": {
     "react": ">=16.9.0"
