@@ -1,6 +1,6 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
+  "name": "website",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev -p 4444",

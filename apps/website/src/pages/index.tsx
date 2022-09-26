@@ -5,7 +5,7 @@ import { Card } from "../components/Card/Card";
 
 const Home = () => (
   <main>
-    <h1>React Carousel</h1>
+    <h1>React Ribbon</h1>
 
     <h2>Hero</h2>
     <CarouselHero>
