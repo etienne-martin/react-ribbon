@@ -7,4 +7,16 @@
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }

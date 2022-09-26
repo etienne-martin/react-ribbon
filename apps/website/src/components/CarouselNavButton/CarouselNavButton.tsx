@@ -7,7 +7,11 @@ export const PrevButton = React.forwardRef<
   ButtonHTMLAttributes<HTMLButtonElement>
 >(({ ...otherProps }, ref) => {
   return (
-    <button {...otherProps} ref={ref} className={`${styles.button}`}>
+    <button
+      {...otherProps}
+      ref={ref}
+      className={`${styles.button} ${styles.prev}`}
+    >
       {"<"}
     </button>
   );
@@ -18,7 +22,11 @@ export const NextButton = React.forwardRef<
   ButtonHTMLAttributes<HTMLButtonElement>
 >(({ ...otherProps }, ref) => {
   return (
-    <button {...otherProps} ref={ref} className={`${styles.button}`}>
+    <button
+      {...otherProps}
+      ref={ref}
+      className={`${styles.button} ${styles.next}`}
+    >
       {">"}
     </button>
   );

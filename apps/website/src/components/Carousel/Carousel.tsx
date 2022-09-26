@@ -40,28 +40,23 @@ export const Carousel: FC<CarouselProps> = ({
   };
 
   return (
-    <>
-      <header>
-        <PrevButton
-          ref={prevButtonRef}
-          onClick={() => carouselRef.current?.prevPage()}
-        />
-
-        <NextButton
-          ref={nextButtonRef}
-          onClick={() => carouselRef.current?.nextPage()}
-        />
-      </header>
-      <div className={styles.container}>
-        <ReactCarousel
-          ref={carouselRef}
-          initialSlideCount={initialSlideCount}
-          onPageChange={handlePageChange}
-          className={styles.carousel}
-        >
-          {children}
-        </ReactCarousel>
-      </div>
-    </>
+    <div className={styles.container}>
+      <PrevButton
+        ref={prevButtonRef}
+        onClick={() => carouselRef.current?.prevPage()}
+      />
+      <ReactCarousel
+        ref={carouselRef}
+        initialSlideCount={initialSlideCount}
+        onPageChange={handlePageChange}
+        className={styles.carousel}
+      >
+        {children}
+      </ReactCarousel>
+      <NextButton
+        ref={nextButtonRef}
+        onClick={() => carouselRef.current?.nextPage()}
+      />
+    </div>
   );
 };
