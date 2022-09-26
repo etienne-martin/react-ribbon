@@ -2,6 +2,9 @@
 
 A fully responsive React carousel with first-class SSR support.
 
+[![Build status](https://github.com/etienne-martin/react-ribbon/workflows/Pipeline/badge.svg)](https://github.com/etienne-martin/react-ribbon/actions)
+[![npm monthly downloads](https://img.shields.io/npm/dm/react-ribbon.svg)](https://www.npmjs.com/package/react-ribbon)
+
 ## Installation
 
 To use react-ribbon in your project, run:
